@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
 from app.database import Base, engine, SessionLocal
 from app.seed import seed_data
 from app.routes.vehicles import router as vehicles_router
@@ -13,9 +15,21 @@ app = FastAPI(
     description="API REST para concesionario / venta de carros"
 )
 
+# CORS para permitir consumo desde frontend local (ej: v0/Next.js en localhost:3000)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 Base.metadata.create_all(bind=engine)
 
-# Sembrar datos mock iniciales
+# Seed inicial
 db = SessionLocal()
 seed_data(db)
 db.close()
