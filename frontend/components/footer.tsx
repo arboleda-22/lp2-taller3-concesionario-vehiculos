@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Car, Facebook, Instagram, Twitter, MapPin, Phone, Mail } from 'lucide-react'
+import { Car, MapPin, Phone, Mail } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 
 export function Footer() {
@@ -23,15 +23,15 @@ export function Footer() {
             </p>
             <div className="flex gap-4">
               <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Facebook className="h-5 w-5" />
+                <span className="text-xl">f</span>
                 <span className="sr-only">Facebook</span>
               </Link>
               <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Instagram className="h-5 w-5" />
+                <span className="text-xl">i</span>
                 <span className="sr-only">Instagram</span>
               </Link>
               <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Twitter className="h-5 w-5" />
+                <span className="text-xl">t</span>
                 <span className="sr-only">Twitter</span>
               </Link>
             </div>
